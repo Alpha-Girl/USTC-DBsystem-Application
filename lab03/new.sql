@@ -14,22 +14,22 @@ alter table 客户
    drop constraint FK_客户_负责_员工;
 
 alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户_支行;
+   drop constraint FK_YY_zh;
 
 alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户2_客户;
+   drop constraint FK_YY_kh;
 
 alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户3_账户;
+   drop constraint FK_YY_ww;
 
 alter table 拥有贷款
-   drop constraint FK_拥有贷款_拥有贷款_贷款;
+   drop constraint FK_YY_ss;
 
 alter table 拥有贷款
-   drop constraint FK_拥有贷款_拥有贷款2_客户;
+   drop constraint FK_dk_kh;
 
 alter table 支付情况
-   drop constraint FK_支付情况_逐次支付_贷款;
+   drop constraint FK_zf_dk;
 
 alter table 支票账户
    drop constraint FK_支票账户_分为2_账户;
@@ -280,27 +280,27 @@ alter table 客户
       references 员工 (身份证号);
 
 alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户_支行 foreign key (支行名)
+   add constraint FK_YY_zh foreign key (支行名)
       references 支行 (支行名);
 
 alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户2_客户 foreign key (身份证号)
+   add constraint FK_YY_kh foreign key (身份证号)
       references 客户 (身份证号);
 
 alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户3_账户 foreign key (账户号, 账户类型)
+   add constraint FK_YY_ww foreign key (账户号, 账户类型)
       references 账户 (账户号, 账户类型);
 
 alter table 拥有贷款
-   add constraint FK_拥有贷款_拥有贷款_贷款 foreign key (贷款号)
+   add constraint FK_YY_ss foreign key (贷款号)
       references 贷款 (贷款号);
 
 alter table 拥有贷款
-   add constraint FK_拥有贷款_拥有贷款2_客户 foreign key (身份证号)
+   add constraint FK_dk_kh foreign key (身份证号)
       references 客户 (身份证号);
 
 alter table 支付情况
-   add constraint FK_支付情况_逐次支付_贷款 foreign key (贷款号)
+   add constraint FK_zf_dk foreign key (贷款号)
       references 贷款 (贷款号);
 
 alter table 支票账户

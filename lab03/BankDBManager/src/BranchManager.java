@@ -23,6 +23,8 @@ import javax.swing.JTextField;
 import java.util.*;
 import java.sql.*;
 
+
+
 public class BranchManager extends JFrame implements ActionListener {
 	public JPanel panelBranch;
 	private JLabel condLabel;
@@ -175,6 +177,8 @@ public class BranchManager extends JFrame implements ActionListener {
 			}
 		}
 	}
+
+	
 
 	public String insertInfo() {
 		JTextField nNameField = new JTextField(15);

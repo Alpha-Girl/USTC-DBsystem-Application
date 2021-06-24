@@ -2,17 +2,17 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/ojdbc8.jar" sourcepath="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/ojdbcsrc.zip"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/ons.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/oraclepki.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/orai18n.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/osdt_cert.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/osdt_core.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/simplefan.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/ucp.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/OJDBC8-Full/xdb6.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/jdatepicker-1.3.4.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
-	<classpathentry kind="lib" path="E:/LearningFiles/数据库系统及应用/lab03/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\ojdbc8.jar" sourcepath="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\ojdbcsrc.zip"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\ons.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\oraclepki.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\orai18n.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\osdt_cert.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\osdt_core.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\simplefan.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\ucp.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\xdb6.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\jdatepicker-1.3.4.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="D:\USTC\数据库系统及应用\USTC-DBsystem-Application\lab03\BankDBManager\ojdbc8-full\ojdbc8-full\jfreechart-1.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
