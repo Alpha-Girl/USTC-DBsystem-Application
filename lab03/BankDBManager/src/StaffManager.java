@@ -31,8 +31,8 @@ public class StaffManager extends JFrame implements ActionListener {
 	private JLabel condLabel;
 	private JTextField condText;
 	private JTable resTable;
-	private JLabel[] paraLabel = new JLabel[6];
-	private JTextField[] paraText = new JTextField[6];
+	private JLabel[] paraLabel = new JLabel[7];
+	private JTextField[] paraText = new JTextField[7];
 	private JComboBox[] paraSymBox;
 	private JButton insertBtn, deleteBtn, updateBtn, searchBtn;
 
@@ -48,13 +48,13 @@ public class StaffManager extends JFrame implements ActionListener {
 		"查询无结果"
 	};
 	private String dbName = "员工";
-	private String[] labelName = {"身份证号：","支行名：", "姓名：", "电话号码：", "家庭住址：", "开始工作日期："};
-	private String[] colName = {"", "身份证号","支行名", "姓名", "电话号码", "家庭住址", "开始工作日期"};
+	private String[] labelName = {"身份证号：","支行名：", "姓名：", "电话号码：", "家庭住址：", "开始工作日期：", "部门号："};
+	private String[] colName = {"", "身份证号","支行名", "姓名", "电话号码", "家庭住址", "开始工作日期", "部门号"};
 	private String[] syms = {"=", ">", "<", ">=", "<=", "<>"};
 	private Object[][] data = {{new Boolean(false), "", "", "", "", "", ""}};
 	private Object[][] dataTable;
 	private int INSERT = 1, DELETE = 2, UPDATE = 3, SEARCH = 4;
-	private int labelNum = labelName.length;
+	private int labelNum = 7;
 	Object[][] oldTable;
 	
 	public StaffManager() {
@@ -246,7 +246,7 @@ public class StaffManager extends JFrame implements ActionListener {
 		JLabel[] nparaLabel = new JLabel[labelNum];
 		JTextField[] nparaText = new JTextField[labelNum];
 		String newRow = "";
-		String[] paras = {"", "", "", "", "", ""};
+		String[] paras = {"", "", "", "", "", "",""};
 
 		JPanel myPanel = new JPanel();
 		myPanel.setPreferredSize(new Dimension(250, 400));

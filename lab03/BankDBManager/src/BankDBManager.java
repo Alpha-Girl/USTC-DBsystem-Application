@@ -153,10 +153,10 @@ public class BankDBManager extends JFrame implements ActionListener {
 			userName = userField.getText();
 			password = passwdField.getText();*/
 			port = "1521";
-			sid = "www";
+			sid = "WWW";
 			userName = "system";
 			password = "wacfucker";
-			dbURL = "jdbc:oracle:thin:@localhost:" + port + "/" + sid;
+			dbURL = "jdbc:oracle:thin:@localhost:" + port + ":" + sid;
 		}
 		if (userName != null && password != null && dbURL != null) {
 			try {
@@ -177,7 +177,7 @@ public class BankDBManager extends JFrame implements ActionListener {
 				buMng.pBuInit();
 			} catch (SQLException sqle) {
 				//TODO: handle exception
-				JOptionPane.showMessageDialog(null, "连接失败！\n请重试！", "错误�?", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "连接失败！\n请重试！", "错误！", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -185,7 +185,7 @@ public class BankDBManager extends JFrame implements ActionListener {
 	public void logoutFunc() {
 		try {
 			closeAll();
-			JOptionPane.showMessageDialog(null, "登出成功�?", "成功�?", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "登出成功！", "成功！", JOptionPane.PLAIN_MESSAGE);
 			login.setEnabled(true);
 			logout.setEnabled(false);
 			brMng.panelBranch.removeAll();
@@ -196,13 +196,13 @@ public class BankDBManager extends JFrame implements ActionListener {
 			buMng.panelBusiness.removeAll();
 		} catch (SQLException e) {
 			//TODO: handle exception
-			JOptionPane.showMessageDialog(null, "登出失败！\n请重试！", "错误�?", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "登出失败！\n请重试！", "错误！", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	public void menuInit() {
-		this.setJMenuBar(menuBar);    //添加菜单�?
-		menuBar.add(menuFile);      //添加 “文件�? 菜单
+		this.setJMenuBar(menuBar);    //添加菜单
+		menuBar.add(menuFile);      //添加 “文件” 菜单
 		login.addActionListener(this);
 		menuFile.add(login);
 		logout.addActionListener(this);

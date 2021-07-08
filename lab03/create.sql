@@ -1,16 +1,17 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     2018/6/12 23:25:30                           */
 /*==============================================================*/
-
 alter table 部门
    drop constraint FK_部门_员工_经理;
 
+alter table 部门
+   drop constraint FK_部门_支行;
+
 alter table 员工
    drop constraint FK_员工_部门_经理;
-   
-alter table 储蓄账户
-   drop constraint FK_储蓄账户_分为_账户;
+
+alter table 拥有账户
+   drop constraint UQKEY_拥有账户;
 
 alter table 员工
    drop constraint FK_员工_工作_支行;
@@ -19,25 +20,19 @@ alter table 客户
    drop constraint FK_客户_负责_员工;
 
 alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户_支行;
+   drop constraint FK_YY_zh;
 
 alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户2_客户;
-
-alter table 拥有账户
-   drop constraint FK_拥有账户_拥有账户3_账户;
+   drop constraint FK_YY_kh;
 
 alter table 拥有贷款
-   drop constraint FK_拥有贷款_拥有贷款_贷款;
+   drop constraint FK_YY_ss;
 
 alter table 拥有贷款
-   drop constraint FK_拥有贷款_拥有贷款2_客户;
+   drop constraint FK_dk_kh;
 
 alter table 支付情况
-   drop constraint FK_支付情况_逐次支付_贷款;
-
-alter table 支票账户
-   drop constraint FK_支票账户_分为2_账户;
+   drop constraint FK_zf_dk;
 
 alter table 贷款
    drop constraint FK_贷款_发放_支行;
@@ -74,14 +69,13 @@ drop table 支票账户 cascade constraints;
 
 drop table 支行 cascade constraints;
 
-drop table 账户 cascade constraints;
-
 drop index 发放_FK;
 
 drop table 贷款 cascade constraints;
 
+drop table 部门 cascade constraints;
 /*==============================================================*/
-/* Table: 储蓄账户                                                  */
+/* Table: 储蓄账户                                              */
 /*==============================================================*/
 create table 储蓄账户 
 (
@@ -106,20 +100,23 @@ create table 员工
    电话号码                 VARCHAR2(20),
    家庭住址                 VARCHAR2(1000),
    开始工作日期               DATE,
-   部门号                     INTEGER,
+   部门号                     VARCHAR(18),
    constraint PK_员工 primary key (身份证号)
 );
+
 /*==============================================================*/
 /* Table: 部门                                                    */
 /*==============================================================*/
 create table 部门 
 (
-   部门号                 CHAR(18)             not null,
+   部门号                 VARCHAR(18)             not null,
+   支行名                  VARCHAR2(100),
    部门名称                VARCHAR2(100),
    部门类型                   VARCHAR2(20),
    部门经理身份证号                 CHAR(18),
    constraint PK_部门 primary key (部门号)
 );
+
 /*==============================================================*/
 /* Index: 工作_FK                                                 */
 /*==============================================================*/
@@ -144,6 +141,9 @@ create table 客户
    constraint PK_客户 primary key (身份证号)
 );
 
+
+
+
 /*==============================================================*/
 /* Index: 负责_FK                                                 */
 /*==============================================================*/
@@ -161,7 +161,8 @@ create table 拥有账户
    账户号                  VARCHAR2(100)        not null,
    账户类型                 VARCHAR2(20)         not null,
    constraint PK_拥有账户 primary key (支行名, 身份证号, 账户号, 账户类型),
-   constraint AK_UQKEY1_拥有账户 unique (支行名, 身份证号, 账户类型)
+   constraint AK_UQKEY1_拥有账户 unique (支行名, 身份证号, 账户类型),
+   constraint UQKEY_拥有账户 unique (账户号)
 );
 
 /*==============================================================*/
@@ -247,21 +248,9 @@ create table 支票账户
 create table 支行 
 (
    支行名                  VARCHAR2(100)        not null,
+   支行城市                VARCHAR2(100),
    资产                   FLOAT,
    constraint PK_支行 primary key (支行名)
-);
-
-/*==============================================================*/
-/* Table: 账户                                                    */
-/*==============================================================*/
-create table 账户 
-(
-   账户号                  VARCHAR2(100)        not null,
-   账户类型                 VARCHAR2(20)         not null,
-   余额                   FLOAT,
-   开户日期                 DATE,
-   最近访问日期               DATE,
-   constraint PK_账户 primary key (账户号, 账户类型)
 );
 
 /*==============================================================*/
@@ -282,11 +271,6 @@ create table 贷款
 create index 发放_FK on 贷款 (
    支行名 ASC
 );
-
-alter table 储蓄账户
-   add constraint FK_储蓄账户_分为_账户 foreign key (账户号, 账户类型)
-      references 账户 (账户号, 账户类型);
-
 alter table 部门
    add constraint FK_部门_员工_经理 foreign key (部门经理身份证号)
       references 员工 (身份证号);
@@ -294,6 +278,9 @@ alter table 部门
 alter table 员工
    add constraint FK_员工_部门_经理 foreign key (部门号)
       references 部门 (部门号);
+alter table 部门
+   add constraint FK_部门_支行 foreign key (支行名)
+      references 支行 (支行名);
 
 alter table 员工
    add constraint FK_员工_工作_支行 foreign key (支行名)
@@ -304,34 +291,24 @@ alter table 客户
       references 员工 (身份证号);
 
 alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户_支行 foreign key (支行名)
+   add constraint FK_YY_zh foreign key (支行名)
       references 支行 (支行名);
 
 alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户2_客户 foreign key (身份证号)
+   add constraint FK_YY_kh foreign key (身份证号)
       references 客户 (身份证号);
 
-alter table 拥有账户
-   add constraint FK_拥有账户_拥有账户3_账户 foreign key (账户号, 账户类型)
-      references 账户 (账户号, 账户类型);
-
 alter table 拥有贷款
-   add constraint FK_拥有贷款_拥有贷款_贷款 foreign key (贷款号)
+   add constraint FK_YY_ss foreign key (贷款号)
       references 贷款 (贷款号);
 
 alter table 拥有贷款
-   add constraint FK_拥有贷款_拥有贷款2_客户 foreign key (身份证号)
+   add constraint FK_dk_kh foreign key (身份证号)
       references 客户 (身份证号);
 
 alter table 支付情况
-   add constraint FK_支付情况_逐次支付_贷款 foreign key (贷款号)
+   add constraint FK_zf_dk foreign key (贷款号)
       references 贷款 (贷款号);
 
-alter table 支票账户
-   add constraint FK_支票账户_分为2_账户 foreign key (账户号, 账户类型)
-      references 账户 (账户号, 账户类型);
 
-alter table 贷款
-   add constraint FK_贷款_发放_支行 foreign key (支行名)
-      references 支行 (支行名);
 
